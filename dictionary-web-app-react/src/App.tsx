@@ -1,18 +1,19 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Header from "./Components/Header";
+import Input from "./Components/Input";
+import Response from "./Components/Response/Response";
 
 function App() {
-  const [selectedFont, setSelectedFont] = useState("sansSerif");
-  const [theme, setTheme] = useState("light");
   const [response, setResponse] = useState("");
 
   return (
     <>
       <div className="w-full h-full flex justify-center items-center">
         <div className="w-full h-full max-w-[768px] max-h-[1197px] px-[32px] py-[36.5px]">
-          <div className="w-full">Header</div>
-          <div className="w-full">Input</div>
-          <div className="w-full">Response</div>
+          <Header />
+          <Input />
+          <Response />
         </div>
       </div>
     </>
