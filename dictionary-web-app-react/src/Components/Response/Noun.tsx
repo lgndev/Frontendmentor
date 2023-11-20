@@ -7,22 +7,21 @@ interface NounProps {
 const Noun: React.FC<NounProps> = (props) => {
   return (
     <>
-      <div className="flex justify-start items-center mb-[40px]">
-        <h1 className="mr-[20px] text-[24px] leading-[29px]">noun</h1>
+      <div className="flex justify-start items-center mb-[32px]">
+        <h1 className="mr-[16px] text-[18px] font-bold font-italic">noun</h1>
         <div className="w-full h-[1px] border-b border-[#E9E9E9]"></div>
       </div>
-
-      <h2 className="mb-[25px] text-[20px]">Meaning</h2>
-      <ul className="ml-[47px] list-disc">
+      <h2 className="mb-[17px] text-[16px] text-[#757575]">Meaning</h2>
+      <ul className="ml-[24px] list-disc">
         {props.jsonData[0].meanings[0].definitions.map((definition) => {
           return (
-            <li className="text-[18px] mb-[13px]">{definition.definition}</li>
+            <li className="text-[15px] mb-[13px]">{definition.definition}</li>
           );
         })}
       </ul>
-      <div className=" mt-[40px] mb-[40px] flex justify-start items-center">
-        <h2 className="mr-[22px] text-[20px]">Synonyms</h2>
-        <button type="button" className="mr-[22px] text-[20px] underline">
+      <div className="mb-[32px] flex justify-start items-center">
+        <h2 className="mr-[24px] text-[16px]">Synonyms</h2>
+        <button type="button" className=" text-[16px] underline font-bold">
           {props.jsonData[0].meanings[0].synonyms[0]}
         </button>
       </div>

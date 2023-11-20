@@ -27,7 +27,7 @@ const Response = () => {
       }
     };
 
-    getWord("test");
+    getWord("keyboard");
   }, []);
 
   return (

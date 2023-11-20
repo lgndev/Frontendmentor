@@ -1,16 +1,13 @@
 import "./App.css";
-import { useState } from "react";
 import Header from "./Components/Header";
 import Input from "./Components/Input";
 import Response from "./Components/Response/Response";
 
-function App() {
-  const [response, setResponse] = useState("");
-
+const App = () => {
   return (
     <>
       <div className="w-full h-full flex justify-center items-center">
-        <div className="w-full h-full max-w-[768px] max-h-[1197px] px-[32px] py-[36.5px]">
+        <div className="w-full h-full overflow-x-hidden px-[24px] py-[24px] md:px-[39px] md:py-[58px] lg:max-w-[736px]">
           <Header />
           <Input />
           <Response />
@@ -18,6 +15,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;

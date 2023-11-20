@@ -9,18 +9,34 @@ interface WordProps {
 // https://www.pluralsight.com/guides/use-interface-props-in-functional-components-using-typescript-with-react-
 const Word: React.FC<WordProps> = (props) => {
   const audioHandler = () => {
-    let phoneticAudio = new Audio(props.jsonData[0].phonetics[2].audio);
-    phoneticAudio.play();
+    // loop through phonetics arr
+    // use "BY-SA 3.0" license audio
+    const saLicense = props.jsonData[0].phonetics.find(
+      (el) => el?.license?.name === "BY-SA 3.0"
+    );
+
+    if (saLicense) {
+      const phoneticAudioElement = new Audio(saLicense.audio);
+      phoneticAudioElement.play();
+    }
   };
 
   return (
-    <div className="flex justify-between items-center mb-[40px]">
+    <div className="flex justify-between items-center mb-[32px]">
       <div>
-        <div className="text-[64px]">{props.jsonData[0].word}</div>
-        <div className="text-[24px]">{props.jsonData[0].phonetic}</div>
+        <div className="text-[32px] text-[#2d2d2d] font-bold mb-[8px]">
+          {props.jsonData[0].word}
+        </div>
+        <div className="text-[24px] text-[#a445ed]">
+          {props.jsonData[0].phonetic}
+        </div>
       </div>
       <button className="h-max" onClick={audioHandler}>
-        <img src={icon_play} alt="audio play image" />
+        <img
+          src={icon_play}
+          alt="audio play image"
+          className="w-[48px] h-[48px]"
+        />
       </button>
     </div>
   );
