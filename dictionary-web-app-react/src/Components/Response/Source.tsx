@@ -26,6 +26,7 @@ const Source: React.FC<SourceProps> = (props) => {
           style={{
             color: theme[theme.active].secondary,
           }}
+          target="_blank"
         >
           {props.jsonData[0].sourceUrls[0]}
         </a>

@@ -11,8 +11,12 @@ const Header = () => {
   const theme = useDictionaryStore((state) => state.theme);
 
   return (
-    <div className="w-full flex justify-end items-center mb-[52px]">
-      <img src={logo} alt="logo" className="mr-[auto] w-[28px] h-[32px]" />
+    <div className="w-full flex justify-end items-center mb-[52px] md:mb-[51.5px]">
+      <img
+        src={logo}
+        alt="logo"
+        className="mr-[auto] w-[28px] h-[32px] md:w-[32px] h-[36.5px]"
+      />
       <button
         type="button"
         onClick={() => {
@@ -20,7 +24,7 @@ const Header = () => {
             return !prevState;
           });
         }}
-        className="flex items-center text-[14px] text-[#2d2d2d] font-bold relative"
+        className="flex items-center text-[14px] font-bold relative md:text-[18px]"
         style={{
           color: theme[theme.active].secondary,
         }}
@@ -29,7 +33,7 @@ const Header = () => {
         <img
           src={icon_arrow_down}
           alt="arrow down"
-          className="w-[12px] h-[6px] ml-[16px] mr-[16px]"
+          className="w-[12px] h-[6px] mx-[16px] md:mx-[21px] w-[12px] h-[6px]"
         />
         <div
           className={`${
@@ -61,7 +65,7 @@ const Header = () => {
       <button
         type="button"
         onClick={setTheme}
-        className={`ml-[16px] mr-[12px] w-[40px] h-[20px] rounded-[10px] flex justify-start items-center`}
+        className={`ml-[16px] mr-[12px] w-[40px] h-[20px] rounded-[10px] flex justify-start items-center md:ml-[26px] mr-[20px]`}
         style={{
           backgroundColor:
             theme.active === "light"

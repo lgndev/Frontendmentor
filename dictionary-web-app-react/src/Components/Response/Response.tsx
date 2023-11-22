@@ -3,11 +3,21 @@ import Noun from "./Noun";
 import Verb from "./Verb";
 import Source from "./Source";
 import { useDictionaryStore } from "../../store/dictionaryStore";
+import icon_play from "../../assets/images/icon-play.svg";
 
 const Response = () => {
   const jsonData = useDictionaryStore((state) => state?.response?.jsonData);
   const error = useDictionaryStore((state) => state?.response?.error);
+  const loading = useDictionaryStore((state) => state?.response?.loading);
   const theme = useDictionaryStore((state) => state.theme);
+
+  const LoadingComponent = () => {
+    return (
+      <div className="relative mx-[auto] w-[100px]">
+        <p className="absolute text-center animate-rotate ">ꃋᴖꃋ</p>
+      </div>
+    );
+  };
 
   const ErrorComponent = () => {
     return (
@@ -45,6 +55,7 @@ const Response = () => {
           <Source jsonData={jsonData} />
         </>
       )}
+      {loading && <LoadingComponent />}
       {error && <ErrorComponent />}
     </div>
   );

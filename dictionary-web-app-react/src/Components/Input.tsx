@@ -13,7 +13,7 @@ const Input = () => {
 
   return (
     <form
-      className="relative w-full mb-[24px]"
+      className="relative w-full mb-[24px] md:mb-[41px]"
       onSubmit={(e) => {
         e.preventDefault();
         setEmptyInput("");
@@ -28,7 +28,7 @@ const Input = () => {
         <input
           type="text"
           placeholder="Search for any word..."
-          className="focus-visible:outline-0 w-full h-[48px] rounded-[16px] border-[1px] border-solid flex justify-start items-center pl-[24px] pr-[24px] text-[16px] "
+          className="focus-visible:outline-0 w-full h-[48px] rounded-[16px] border-[1px] border-solid flex justify-start items-center pl-[24px] pr-[24px] text-[16px] md:h-[64px] text-[20px]"
           value={inputValue}
           onChange={(e) => {
             onChangeHandler(e);

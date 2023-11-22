@@ -25,6 +25,7 @@ export const useDictionaryStore = create<BearState>()((set, get) => ({
     },
   },
   response: {
+    loading: false,
     error: false,
     jsonData: {},
   },
@@ -33,6 +34,13 @@ export const useDictionaryStore = create<BearState>()((set, get) => ({
       theme: {
         ...state.theme,
         active: state.theme.active === "light" ? "dark" : "light",
+      },
+    })),
+  setLoading: (loading) =>
+    set((state) => ({
+      response: {
+        ...state.response,
+        loading,
       },
     })),
   setError: (error) =>
@@ -53,8 +61,10 @@ export const useDictionaryStore = create<BearState>()((set, get) => ({
     //...
     const setJsonData = get().setJsonData;
     const setError = get().setError;
+    const setLoading = get().setLoading;
     setJsonData({});
     setError(false);
+    setLoading(true);
     try {
       const res = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
@@ -63,10 +73,16 @@ export const useDictionaryStore = create<BearState>()((set, get) => ({
         throw new Error(`${res.status}`);
       } else {
         const jsonData = await res.json();
-        setJsonData(jsonData);
+        setTimeout(() => {
+          setJsonData(jsonData);
+          setLoading(false);
+        }, 500);
       }
     } catch (err) {
-      setError(true);
+      setTimeout(() => {
+        setError(true);
+        setLoading(false);
+      }, 500);
     }
   },
 }));
