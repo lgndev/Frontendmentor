@@ -15,9 +15,9 @@ const Noun: React.FC<NounProps> = (props) => {
     <>
       {noun && (
         <>
-          <div className="flex justify-start items-center mb-[32px]">
+          <div className="flex justify-start items-center mb-[32px] md:mb-[44px]">
             <h1
-              className="mr-[16px] text-[18px] font-bold font-italic"
+              className="mr-[16px] text-[18px] font-bold font-italic md:text-[24px]"
               style={{
                 color: theme[theme.active].secondary,
               }}
@@ -35,18 +35,18 @@ const Noun: React.FC<NounProps> = (props) => {
             ></div>
           </div>
           <h2
-            className="mb-[17px] text-[16px] "
+            className="mb-[17px] text-[16px] md:text-[24px] mb-[27px]"
             style={{
               color: theme[theme.active].primary,
             }}
           >
             Meaning
           </h2>
-          <ul className="ml-[24px] list-disc">
+          <ul className="ml-[24px] list-disc md:ml-[40px]">
             {noun.definitions.map((definition) => {
               return (
                 <li
-                  className="text-[15px] mb-[13px]"
+                  className="text-[15px] mb-[13px] md:text-[20px]"
                   style={{
                     color: theme[theme.active].secondary,
                   }}
@@ -56,9 +56,9 @@ const Noun: React.FC<NounProps> = (props) => {
               );
             })}
           </ul>
-          <div className="mb-[32px] flex justify-start items-center">
+          <div className="mb-[32px] flex justify-start items-center md:mb-[43px]">
             <h2
-              className="mr-[24px] text-[16px]"
+              className="mr-[24px] text-[16px] md:text-[24px] mr-[40px]"
               style={{
                 color: theme[theme.active].primary,
               }}
@@ -66,8 +66,7 @@ const Noun: React.FC<NounProps> = (props) => {
               Synonyms
             </h2>
             <p
-              type="button"
-              className=" text-[16px] font-bold"
+              className=" text-[16px] font-bold md:text-[20px]"
               style={{
                 color: theme[theme.active].accent,
               }}

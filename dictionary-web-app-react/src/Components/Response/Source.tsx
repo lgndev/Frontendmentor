@@ -12,7 +12,7 @@ const Source: React.FC<SourceProps> = (props) => {
   return (
     <div className="">
       <p
-        className="underline text-[16px]"
+        className="text-[16px]"
         style={{
           color: theme[theme.active].primary,
         }}

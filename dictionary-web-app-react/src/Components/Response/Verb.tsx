@@ -15,9 +15,9 @@ const Noun: React.FC<VerbProps> = (props) => {
     <>
       {verb && (
         <>
-          <div className="flex justify-start items-center mb-[31px]">
+          <div className="flex justify-start items-center mb-[31px] md:mb-[44px]">
             <h1
-              className="mr-[25px] text-[18px] font-bold font-italic"
+              className="mr-[25px] text-[18px] font-bold font-italic md:text-[24px]"
               style={{
                 color: theme[theme.active].secondary,
               }}
@@ -35,20 +35,20 @@ const Noun: React.FC<VerbProps> = (props) => {
             ></div>
           </div>
           <h2
-            className="mb-[16px] text-[16px]"
+            className="mb-[16px] text-[16px] md:text-[24px] mb-[27px]"
             style={{
               color: theme[theme.active].primary,
             }}
           >
             Meaning
           </h2>
-          <div className="pb-[32px]">
-            <ul className="ml-[24px] list-disc">
+          <div className="pb-[32px] md:pb-[39px]">
+            <ul className="ml-[24px] list-disc md:ml-[40px]">
               {verb.definitions.map((definition) => {
                 return (
                   <>
                     <li
-                      className="text-[15px] mb-[13px]"
+                      className="text-[15px] mb-[13px] md:text-[20px]"
                       style={{
                         color: theme[theme.active].secondary,
                       }}
@@ -57,7 +57,7 @@ const Noun: React.FC<VerbProps> = (props) => {
                     </li>
                     {definition.example && (
                       <li
-                        className="text-[15px] list-none"
+                        className="text-[15px] list-none md:text-[20px]"
                         style={{
                           color: theme[theme.active].primary,
                         }}

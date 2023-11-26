@@ -24,10 +24,10 @@ const Word: React.FC<WordProps> = (props) => {
   };
 
   return (
-    <div className="flex justify-between items-center mb-[32px]">
+    <div className="flex justify-between items-center mb-[32px] md:mb-[42px]">
       <div>
         <p
-          className="text-[32px] font-bold mb-[8px]"
+          className="text-[32px] font-bold mb-[8px] md:text-[64px] mb-[11px]"
           style={{
             color: theme[theme.active].secondary,
           }}
@@ -35,7 +35,7 @@ const Word: React.FC<WordProps> = (props) => {
           {props.jsonData[0].word}
         </p>
         <p
-          className="text-[24px]"
+          className="text-[18px] md:text-[24px]"
           style={{
             color: theme[theme.active].accent,
           }}
@@ -48,7 +48,7 @@ const Word: React.FC<WordProps> = (props) => {
           <img
             src={icon_play}
             alt="audio play image"
-            className="w-[48px] h-[48px]"
+            className="w-[48px] h-[48px] md:w-[75px] h-[75px]"
           />
         </button>
       )}

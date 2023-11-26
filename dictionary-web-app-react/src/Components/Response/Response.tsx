@@ -14,7 +14,14 @@ const Response = () => {
   const LoadingComponent = () => {
     return (
       <div className="relative mx-[auto] w-[100px]">
-        <p className="absolute text-center animate-rotate ">ꃋᴖꃋ</p>
+        <p
+          className="absolute text-center animate-rotate"
+          style={{
+            color: theme[theme.active].secondary,
+          }}
+        >
+          ꃋᴖꃋ
+        </p>
       </div>
     );
   };
