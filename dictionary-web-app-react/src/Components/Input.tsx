@@ -10,6 +10,7 @@ const Input = () => {
   };
   const theme = useDictionaryStore((state) => state.theme);
   const getWord = useDictionaryStore((state) => state.getWord);
+  const fontFamily = useDictionaryStore((state) => state.fontFamily);
 
   return (
     <form
@@ -40,6 +41,7 @@ const Input = () => {
             borderColor: emptyInput
               ? "#ff5252"
               : theme[theme.active].background_alt,
+            fontFamily,
           }}
         />
         {emptyInput && (

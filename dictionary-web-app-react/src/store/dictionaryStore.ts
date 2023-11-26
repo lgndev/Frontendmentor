@@ -24,11 +24,16 @@ export const useDictionaryStore = create<BearState>()((set, get) => ({
       background_alt: "#1f1f1f ",
     },
   },
+  fontFamily: "sans-serif",
   response: {
     loading: false,
     error: false,
     jsonData: {},
   },
+  setFontFamily: (fontFamily) =>
+    set((state) => ({
+      fontFamily,
+    })),
   setTheme: () =>
     set((state) => ({
       theme: {

@@ -7,6 +7,7 @@ interface VerbProps {
 
 const Noun: React.FC<VerbProps> = (props) => {
   const theme = useDictionaryStore((state) => state.theme);
+  const fontFamily = useDictionaryStore((state) => state.fontFamily);
   const verb = props.jsonData[0].meanings.find(
     (el) => el.partOfSpeech === "verb"
   );
@@ -20,6 +21,7 @@ const Noun: React.FC<VerbProps> = (props) => {
               className="mr-[25px] text-[18px] font-bold font-italic md:text-[24px]"
               style={{
                 color: theme[theme.active].secondary,
+                fontFamily,
               }}
             >
               verb
@@ -38,6 +40,7 @@ const Noun: React.FC<VerbProps> = (props) => {
             className="mb-[16px] text-[16px] md:text-[24px] mb-[27px]"
             style={{
               color: theme[theme.active].primary,
+              fontFamily,
             }}
           >
             Meaning
@@ -51,6 +54,7 @@ const Noun: React.FC<VerbProps> = (props) => {
                       className="text-[15px] mb-[13px] md:text-[20px]"
                       style={{
                         color: theme[theme.active].secondary,
+                        fontFamily,
                       }}
                     >
                       {definition.definition}
@@ -60,6 +64,7 @@ const Noun: React.FC<VerbProps> = (props) => {
                         className="text-[15px] list-none md:text-[20px]"
                         style={{
                           color: theme[theme.active].primary,
+                          fontFamily,
                         }}
                       >{`"${definition.example}"`}</li>
                     )}

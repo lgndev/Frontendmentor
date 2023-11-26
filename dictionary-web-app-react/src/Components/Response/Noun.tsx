@@ -7,6 +7,7 @@ interface NounProps {
 
 const Noun: React.FC<NounProps> = (props) => {
   const theme = useDictionaryStore((state) => state.theme);
+  const fontFamily = useDictionaryStore((state) => state.fontFamily);
   const noun = props.jsonData[0].meanings.find(
     (el) => el.partOfSpeech === "noun"
   );
@@ -20,6 +21,7 @@ const Noun: React.FC<NounProps> = (props) => {
               className="mr-[16px] text-[18px] font-bold font-italic md:text-[24px]"
               style={{
                 color: theme[theme.active].secondary,
+                fontFamily,
               }}
             >
               noun
@@ -38,6 +40,7 @@ const Noun: React.FC<NounProps> = (props) => {
             className="mb-[17px] text-[16px] md:text-[24px] mb-[27px]"
             style={{
               color: theme[theme.active].primary,
+              fontFamily,
             }}
           >
             Meaning
@@ -49,6 +52,7 @@ const Noun: React.FC<NounProps> = (props) => {
                   className="text-[15px] mb-[13px] md:text-[20px]"
                   style={{
                     color: theme[theme.active].secondary,
+                    fontFamily,
                   }}
                 >
                   {definition.definition}
@@ -61,6 +65,7 @@ const Noun: React.FC<NounProps> = (props) => {
               className="mr-[24px] text-[16px] md:text-[24px] mr-[40px]"
               style={{
                 color: theme[theme.active].primary,
+                fontFamily,
               }}
             >
               Synonyms
@@ -69,6 +74,7 @@ const Noun: React.FC<NounProps> = (props) => {
               className=" text-[16px] font-bold md:text-[20px]"
               style={{
                 color: theme[theme.active].accent,
+                fontFamily,
               }}
             >
               {props.jsonData[0].meanings[0].synonyms[0]}

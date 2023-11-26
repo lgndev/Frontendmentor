@@ -9,6 +9,8 @@ const Header = () => {
   const [showFontSelect, setShowFontSelect] = useState(false);
   const setTheme = useDictionaryStore((state) => state.setTheme);
   const theme = useDictionaryStore((state) => state.theme);
+  const fontFamily = useDictionaryStore((state) => state.fontFamily);
+  const setFontFamily = useDictionaryStore((state) => state.setFontFamily);
 
   return (
     <div className="w-full flex justify-end items-center mb-[52px] md:mb-[51.5px]">
@@ -27,9 +29,18 @@ const Header = () => {
         className="flex items-center text-[14px] font-bold relative md:text-[18px]"
         style={{
           color: theme[theme.active].secondary,
+          fontFamily,
         }}
       >
-        {"Sans Serif"}
+        <p style={{ minWidth: "90px" }}>
+          {" "}
+          {fontFamily === "sans-serif"
+            ? "Sans Serif"
+            : fontFamily === "serif"
+            ? "Serif"
+            : "Mono"}
+        </p>
+
         <img
           src={icon_arrow_down}
           alt="arrow down"
@@ -48,9 +59,45 @@ const Header = () => {
             backgroundColor: theme[theme.active].background,
           }}
         >
-          <p>Sans Serif</p>
-          <p>Serif</p>
-          <p>Mono</p>
+          <p
+            style={{ fontFamily: "sans-serif" }}
+            data-font="sans-serif"
+            onClick={(e) => {
+              e.stopPropagation();
+              setFontFamily(e.target.dataset.font);
+              setShowFontSelect((prevState) => {
+                return !prevState;
+              });
+            }}
+          >
+            Sans Serif
+          </p>
+          <p
+            style={{ fontFamily: "serif" }}
+            data-font="serif"
+            onClick={(e) => {
+              e.stopPropagation();
+              setFontFamily(e.target.dataset.font);
+              setShowFontSelect((prevState) => {
+                return !prevState;
+              });
+            }}
+          >
+            Serif
+          </p>
+          <p
+            style={{ fontFamily: "monospace" }}
+            data-font="monospace"
+            onClick={(e) => {
+              e.stopPropagation();
+              setFontFamily(e.target.dataset.font);
+              setShowFontSelect((prevState) => {
+                return !prevState;
+              });
+            }}
+          >
+            Mono
+          </p>
         </div>
       </button>
       <div

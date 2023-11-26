@@ -8,6 +8,7 @@ interface SourceProps {
 
 const Source: React.FC<SourceProps> = (props) => {
   const theme = useDictionaryStore((state) => state.theme);
+  const fontFamily = useDictionaryStore((state) => state.fontFamily);
 
   return (
     <div className="">
@@ -15,6 +16,7 @@ const Source: React.FC<SourceProps> = (props) => {
         className="text-[16px]"
         style={{
           color: theme[theme.active].primary,
+          fontFamily,
         }}
       >
         Source
@@ -25,6 +27,7 @@ const Source: React.FC<SourceProps> = (props) => {
           className="underline text-[16px] mr-[15px]"
           style={{
             color: theme[theme.active].secondary,
+            fontFamily,
           }}
           target="_blank"
         >
