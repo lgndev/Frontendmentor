@@ -17,33 +17,12 @@ export interface DictionaryModel {
       definitions: [
         {
           definition: string;
-          example: string;
           synonyms: string[];
           antonyms: string[];
         }
       ];
-    },
-    {
-      partOfSpeech: string;
-      definitions: [
-        {
-          definition: string;
-          example: string;
-          synonyms: string[];
-          antonyms: string[];
-        }
-      ];
-    },
-    {
-      partOfSpeech: string;
-      definitions: [
-        {
-          definition: string;
-          example: string;
-          synonyms: string[];
-          antonyms: string[];
-        }
-      ];
+      synonyms: string[];
+      antonyms: string[];
     }
   ];
 }

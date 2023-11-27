@@ -7,6 +7,10 @@ interface NounProps {
 
 const Noun: React.FC<NounProps> = (props) => {
   const theme = useDictionaryStore((state) => state.theme);
+  let activeTheme = theme.light;
+  if (theme.active === "dark") {
+    activeTheme = theme.dark;
+  }
   const fontFamily = useDictionaryStore((state) => state.fontFamily);
   const noun = props.jsonData[0].meanings.find(
     (el) => el.partOfSpeech === "noun"
@@ -20,7 +24,7 @@ const Noun: React.FC<NounProps> = (props) => {
             <h1
               className="mr-[16px] text-[18px] font-bold font-italic md:text-[24px]"
               style={{
-                color: theme[theme.active].secondary,
+                color: activeTheme.secondary,
                 fontFamily,
               }}
             >
@@ -31,15 +35,15 @@ const Noun: React.FC<NounProps> = (props) => {
               style={{
                 borderColor:
                   theme.active === "light"
-                    ? theme[theme.active].primary
-                    : theme[theme.active].secondary,
+                    ? activeTheme.primary
+                    : activeTheme.secondary,
               }}
             ></div>
           </div>
           <h2
             className="mb-[17px] text-[16px] md:text-[24px] mb-[27px]"
             style={{
-              color: theme[theme.active].primary,
+              color: activeTheme.primary,
               fontFamily,
             }}
           >
@@ -51,7 +55,7 @@ const Noun: React.FC<NounProps> = (props) => {
                 <li
                   className="text-[15px] mb-[13px] md:text-[20px]"
                   style={{
-                    color: theme[theme.active].secondary,
+                    color: activeTheme.secondary,
                     fontFamily,
                   }}
                 >
@@ -64,7 +68,7 @@ const Noun: React.FC<NounProps> = (props) => {
             <h2
               className="mr-[24px] text-[16px] md:text-[24px] mr-[40px]"
               style={{
-                color: theme[theme.active].primary,
+                color: activeTheme.primary,
                 fontFamily,
               }}
             >
@@ -73,7 +77,7 @@ const Noun: React.FC<NounProps> = (props) => {
             <p
               className=" text-[16px] font-bold md:text-[20px]"
               style={{
-                color: theme[theme.active].accent,
+                color: activeTheme.accent,
                 fontFamily,
               }}
             >

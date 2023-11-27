@@ -3,13 +3,16 @@ import Noun from "./Noun";
 import Verb from "./Verb";
 import Source from "./Source";
 import { useDictionaryStore } from "../../store/dictionaryStore";
-import icon_play from "../../assets/images/icon-play.svg";
 
 const Response = () => {
   const jsonData = useDictionaryStore((state) => state?.response?.jsonData);
   const error = useDictionaryStore((state) => state?.response?.error);
   const loading = useDictionaryStore((state) => state?.response?.loading);
   const theme = useDictionaryStore((state) => state.theme);
+  let activeTheme = theme.light;
+  if (theme.active === "dark") {
+    activeTheme = theme.dark;
+  }
 
   const LoadingComponent = () => {
     return (
@@ -17,7 +20,7 @@ const Response = () => {
         <p
           className="absolute text-center animate-rotate"
           style={{
-            color: theme[theme.active].secondary,
+            color: activeTheme.secondary,
           }}
         >
           ꃋᴖꃋ
@@ -33,7 +36,7 @@ const Response = () => {
         <p
           className="text-[18px] font-bold text-center mb-[13px]"
           style={{
-            color: theme[theme.active].secondary,
+            color: activeTheme.secondary,
           }}
         >
           No Definitions Found
@@ -41,7 +44,7 @@ const Response = () => {
         <p
           className="text-[18px] text-center mb-[13px]"
           style={{
-            color: theme[theme.active].primary,
+            color: activeTheme.primary,
           }}
         >
           Sorry pal, we couldn't find definitions for the word you were looking
