@@ -9,13 +9,17 @@ interface SourceProps {
 const Source: React.FC<SourceProps> = (props) => {
   const theme = useDictionaryStore((state) => state.theme);
   const fontFamily = useDictionaryStore((state) => state.fontFamily);
+  let activeTheme = theme.light;
+  if (theme.active === "dark") {
+    activeTheme = theme.dark;
+  }
 
   return (
     <div className="">
       <p
         className="text-[16px]"
         style={{
-          color: theme[theme.active].primary,
+          color: activeTheme.primary,
           fontFamily,
         }}
       >
@@ -23,15 +27,15 @@ const Source: React.FC<SourceProps> = (props) => {
       </p>
       <div className="flex items-center flex-wrap">
         <a
-          href={props.jsonData[0].sourceUrls[0]}
+          href={props.jsonData[0].sourceUrls?.[0]}
           className="underline text-[16px] mr-[15px]"
           style={{
-            color: theme[theme.active].secondary,
+            color: activeTheme.secondary,
             fontFamily,
           }}
           target="_blank"
         >
-          {props.jsonData[0].sourceUrls[0]}
+          {props.jsonData[0].sourceUrls?.[0]}
         </a>
         <img
           src={icon_new_window}

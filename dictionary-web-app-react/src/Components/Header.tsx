@@ -9,6 +9,10 @@ const Header = () => {
   const [showFontSelect, setShowFontSelect] = useState(false);
   const setTheme = useDictionaryStore((state) => state.setTheme);
   const theme = useDictionaryStore((state) => state.theme);
+  let activeTheme = theme.light;
+  if (theme.active === "dark") {
+    activeTheme = theme.dark;
+  }
   const fontFamily = useDictionaryStore((state) => state.fontFamily);
   const setFontFamily = useDictionaryStore((state) => state.setFontFamily);
 
@@ -28,7 +32,7 @@ const Header = () => {
         }}
         className="flex items-center text-[14px] font-bold relative md:text-[18px]"
         style={{
-          color: theme[theme.active].secondary,
+          color: activeTheme.secondary,
           fontFamily,
         }}
       >
@@ -55,16 +59,21 @@ const Header = () => {
               theme.active === "light"
                 ? "0px 0px 10px 5px rgba(0,0,0,0.25)"
                 : "0px 0px 10px 5px rgba(164, 69, 237, .25)",
-            color: theme[theme.active].secondary,
-            backgroundColor: theme[theme.active].background,
+            color: activeTheme.secondary,
+            backgroundColor: activeTheme.background,
           }}
         >
           <p
             style={{ fontFamily: "sans-serif" }}
             data-font="sans-serif"
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent<HTMLParagraphElement>) => {
               e.stopPropagation();
-              setFontFamily(e.target.dataset.font);
+              if ("dataset" in e.currentTarget) {
+                const dataValue = e.currentTarget.dataset.font;
+                if (dataValue) {
+                  setFontFamily(dataValue);
+                }
+              }
               setShowFontSelect((prevState) => {
                 return !prevState;
               });
@@ -75,9 +84,14 @@ const Header = () => {
           <p
             style={{ fontFamily: "serif" }}
             data-font="serif"
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent<HTMLParagraphElement>) => {
               e.stopPropagation();
-              setFontFamily(e.target.dataset.font);
+              if ("dataset" in e.currentTarget) {
+                const dataValue = e.currentTarget.dataset.font;
+                if (dataValue) {
+                  setFontFamily(dataValue);
+                }
+              }
               setShowFontSelect((prevState) => {
                 return !prevState;
               });
@@ -88,9 +102,14 @@ const Header = () => {
           <p
             style={{ fontFamily: "monospace" }}
             data-font="monospace"
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent<HTMLParagraphElement>) => {
               e.stopPropagation();
-              setFontFamily(e.target.dataset.font);
+              if ("dataset" in e.currentTarget) {
+                const dataValue = e.currentTarget.dataset.font;
+                if (dataValue) {
+                  setFontFamily(dataValue);
+                }
+              }
               setShowFontSelect((prevState) => {
                 return !prevState;
               });
@@ -105,8 +124,8 @@ const Header = () => {
         style={{
           borderRightColor:
             theme.active === "light"
-              ? theme[theme.active].primary
-              : theme[theme.active].secondary,
+              ? activeTheme.primary
+              : activeTheme.secondary,
         }}
       ></div>
       <button
@@ -115,9 +134,7 @@ const Header = () => {
         className={`ml-[16px] mr-[12px] w-[40px] h-[20px] rounded-[10px] flex justify-start items-center md:ml-[26px] mr-[20px]`}
         style={{
           backgroundColor:
-            theme.active === "light"
-              ? theme[theme.active].primary
-              : theme[theme.active].accent,
+            theme.active === "light" ? activeTheme.primary : activeTheme.accent,
           justifyContent: theme.active === "light" ? "flex-start" : "flex-end",
         }}
       >

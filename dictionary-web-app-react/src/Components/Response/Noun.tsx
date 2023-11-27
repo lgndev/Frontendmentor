@@ -12,7 +12,7 @@ const Noun: React.FC<NounProps> = (props) => {
     activeTheme = theme.dark;
   }
   const fontFamily = useDictionaryStore((state) => state.fontFamily);
-  const noun = props.jsonData[0].meanings.find(
+  const noun = props.jsonData[0].meanings?.find(
     (el) => el.partOfSpeech === "noun"
   );
 

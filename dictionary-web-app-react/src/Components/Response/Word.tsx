@@ -11,7 +11,7 @@ interface WordProps {
 const Word: React.FC<WordProps> = (props) => {
   const theme = useDictionaryStore((state) => state.theme);
   const fontFamily = useDictionaryStore((state) => state.fontFamily);
-  const saLicense = props.jsonData[0].phonetics.find(
+  const saLicense = props.jsonData[0].phonetics?.find(
     (el) => el?.license?.name === "BY-SA 3.0"
   );
 

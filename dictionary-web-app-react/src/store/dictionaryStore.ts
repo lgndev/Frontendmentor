@@ -23,7 +23,7 @@ interface DictionaryStoreState {
   response: {
     loading: boolean;
     error: boolean;
-    jsonData: DictionaryModel[] | {};
+    jsonData: DictionaryModel[];
   };
   setFontFamily: (fontFamily: string) => void;
   setTheme: () => void;
@@ -56,7 +56,37 @@ export const useDictionaryStore = create<DictionaryStoreState>()(
     response: {
       loading: false,
       error: false,
-      jsonData: {},
+      jsonData: [
+        {
+          word: "",
+          phonetic: "",
+          phonetics: [
+            {
+              text: "",
+              audio: "",
+            },
+            {
+              text: "",
+            },
+          ],
+          origin: "",
+          meanings: [
+            {
+              partOfSpeech: "",
+              definitions: [
+                {
+                  definition: "",
+                  synonyms: [""],
+                  antonyms: [""],
+                },
+              ],
+              synonyms: [""],
+              antonyms: [""],
+            },
+          ],
+          sourceUrls: [""],
+        },
+      ],
     },
     setFontFamily: (fontFamily) =>
       set(() => ({

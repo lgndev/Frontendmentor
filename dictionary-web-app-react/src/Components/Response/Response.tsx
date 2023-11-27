@@ -57,7 +57,7 @@ const Response = () => {
 
   return (
     <div className="w-full">
-      {jsonData.length > 0 && (
+      {jsonData[0]?.word && (
         <>
           <Word jsonData={jsonData} />
           <Noun jsonData={jsonData} />

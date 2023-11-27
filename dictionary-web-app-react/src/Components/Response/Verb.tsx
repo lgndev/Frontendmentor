@@ -7,8 +7,12 @@ interface VerbProps {
 
 const Noun: React.FC<VerbProps> = (props) => {
   const theme = useDictionaryStore((state) => state.theme);
+  let activeTheme = theme.light;
+  if (theme.active === "dark") {
+    activeTheme = theme.dark;
+  }
   const fontFamily = useDictionaryStore((state) => state.fontFamily);
-  const verb = props.jsonData[0].meanings.find(
+  const verb = props.jsonData[0].meanings?.find(
     (el) => el.partOfSpeech === "verb"
   );
 
@@ -20,7 +24,7 @@ const Noun: React.FC<VerbProps> = (props) => {
             <h1
               className="mr-[25px] text-[18px] font-bold font-italic md:text-[24px]"
               style={{
-                color: theme[theme.active].secondary,
+                color: activeTheme.secondary,
                 fontFamily,
               }}
             >
@@ -31,15 +35,15 @@ const Noun: React.FC<VerbProps> = (props) => {
               style={{
                 borderColor:
                   theme.active === "light"
-                    ? theme[theme.active].primary
-                    : theme[theme.active].secondary,
+                    ? activeTheme.primary
+                    : activeTheme.secondary,
               }}
             ></div>
           </div>
           <h2
             className="mb-[16px] text-[16px] md:text-[24px] mb-[27px]"
             style={{
-              color: theme[theme.active].primary,
+              color: activeTheme.primary,
               fontFamily,
             }}
           >
@@ -53,7 +57,7 @@ const Noun: React.FC<VerbProps> = (props) => {
                     <li
                       className="text-[15px] mb-[13px] md:text-[20px]"
                       style={{
-                        color: theme[theme.active].secondary,
+                        color: activeTheme.secondary,
                         fontFamily,
                       }}
                     >
@@ -63,7 +67,7 @@ const Noun: React.FC<VerbProps> = (props) => {
                       <li
                         className="text-[15px] list-none md:text-[20px]"
                         style={{
-                          color: theme[theme.active].primary,
+                          color: activeTheme.primary,
                           fontFamily,
                         }}
                       >{`"${definition.example}"`}</li>
@@ -80,8 +84,8 @@ const Noun: React.FC<VerbProps> = (props) => {
         style={{
           borderColor:
             theme.active === "light"
-              ? theme[theme.active].primary
-              : theme[theme.active].secondary,
+              ? activeTheme.primary
+              : activeTheme.secondary,
         }}
       ></div>
     </>
